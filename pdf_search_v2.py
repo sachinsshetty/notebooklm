@@ -8,17 +8,13 @@ dwani.api_key = os.getenv("DWANI_API_KEY")
 dwani.api_base = os.getenv("DWANI_API_BASE_URL")
 
 
-prompt = "list the key points and provide the reponse in json"
-
 file_path = "sample_resume.pdf"
-result = dwani.Documents.query_all(
-    file_path, model="gemma3", tgt_lang="eng_Latn", prompt=prompt
+result = dwani.Documents.run_ocr_all(
+    file_path, model="gemma3"
 )
 
-pdf_answer = result["translated_query_answer"]
-
-
-extracted_text = result["original_text"]
+print(result)
+extracted_text = str(result["page_contents"])
 
 result = dwani.Chat.direct(prompt= "provide top 5 important items and return response as json : "  + extracted_text)
 
