@@ -37,21 +37,21 @@ print("recoridng complte")
 with open("input.wav", "wb") as f:
     f.write(wav_io.read())
 
-result = dwani.ASR.transcribe(file_path="input.wav", language="english")
+response = dwani.ASR.transcribe(file_path="input.wav", language="english")
 
+voice_text = response['text'] 
+print(voice_text)
 
-print(result)
-'''
-resp = dwani.Translate.run_translate(sentences=result['text'], src_lang="telugu", tgt_lang="english")
-print(resp)
+file_path = "sample_resume.pdf"
+result = dwani.Documents.query_all(
+    file_path, model="gemma3", tgt_lang="eng_Latn", prompt=voice_text
+)
 
-'''
+pdf_answer = result["translated_query_answer"]
 
-resp = dwani.Chat.direct(prompt=result["text"])
-print(resp)
+print(pdf_answer)
 
-response = dwani.Audio.speech(input = resp["response"], response_format="wav", language="english")
-
+response = dwani.Audio.speech(input = pdf_answer, response_format="wav", language="english")
 
         # Save the audio to a temporary file
 with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
