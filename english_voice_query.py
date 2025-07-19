@@ -1,4 +1,10 @@
-
+import os
+import tempfile
+import io
+import sounddevice as sd
+import wavio
+import platform
+import subprocess
 import dwani
 
 import os 
@@ -45,6 +51,32 @@ resp = dwani.Chat.direct(prompt=result["text"])
 print(resp)
 
 response = dwani.Audio.speech(input = resp["response"], response_format="wav", language="english")
-with open("output2.wav", "wb") as audio_file:
-    audio_file.write(response)
 
+
+        # Save the audio to a temporary file
+with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
+    temp_path = temp_file.name
+    temp_file.write(response)
+
+
+
+# Play the audio based on the operating system
+system = platform.system()
+try:
+    if system == "Windows":
+        process = subprocess.run(["start", str(temp_path)], shell=True)
+    elif system == "Darwin":  # macOS
+        process = subprocess.run(["afplay", str(temp_path)])
+    elif system == "Linux":
+        process = subprocess.run(["aplay", str(temp_path)])
+    else:
+        print(f"Autoplay not supported on {system}. Open {temp_path} manually.")
+        
+except Exception as e:
+    print(f"Error playing audio: {e}")
+finally:
+    # Clean up temporary file
+    try:
+        os.remove(temp_path)
+    except Exception as e:
+        print("Warning: Could not delete temporary file ")
