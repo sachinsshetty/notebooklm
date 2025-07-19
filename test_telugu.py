@@ -7,11 +7,44 @@ dwani.api_key = os.getenv("DWANI_API_KEY")
 dwani.api_base = os.getenv("DWANI_API_BASE_URL")
 
 
-#response = dwani.Audio.speech(input="లిపి కుటుంబము యొక్క సభ్యుల మాతృక. ఇది ప్రస్తుతము వాడుకలో లేని లిపి. క్రీ.పూ.3వ శతాబ్దానికి చెందిన ప్రసిద్ధ అశోకుని శిలా శాసనాలు బ్రాహ్మీ లిపిలో చెక్కబడినవే", response_format="wav", language="telugu")
-#with open("output.wav", "wb") as audio_file:
-#    audio_file.write(response)
+import io
+import time
+import httpx
+import sounddevice as sd
+import wavio
+
+print("Recroding started")
+# Parameters
+duration = 5  # seconds per chunk
+sample_rate = 16000
+channels = 1
+
+audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=channels)
+sd.wait()
 
 
-result = dwani.ASR.transcribe(file_path="output.wav", language="telugu")
+wav_io = io.BytesIO()
+wavio.write(wav_io, audio_data, sample_rate, sampwidth=2)
+wav_io.seek(0)
+
+print("recoridng complte")
+with open("input.wav", "wb") as f:
+    f.write(wav_io.read())
+
+result = dwani.ASR.transcribe(file_path="input.wav", language="telugu")
+
 
 print(result)
+
+resp = dwani.Translate.run_translate(sentences=result['text'], src_lang="telugu", tgt_lang="english")
+print(resp)
+
+
+
+resp = dwani.Chat.create(prompt=resp["translations"][0], src_lang="english", tgt_lang="telugu", model="gemma3")
+print(resp)
+
+response = dwani.Audio.speech(input = resp["response"], response_format="wav", language="telugu")
+with open("output2.wav", "wb") as audio_file:
+    audio_file.write(response)
+
