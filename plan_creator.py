@@ -26,15 +26,23 @@ markdown_content = read_markdown_file(file_path)
 system_prompt = "do not explain, provide the answer in json format"
 resp = dwani.Chat.direct(prompt=markdown_content, system_prompt=system_prompt)
 
+
+
 tasks = resp['response'].replace('```json', '').replace('```', '').strip()
-#print(resp)
 
-json_value = json.loads(tasks)
 
-print(json_value)
-add_prompt = "for each of task, generate python code to execute in a docker container. Results will be verfied in future step"
-resp = dwani.Chat.direct(prompt= add_prompt + tasks)
+resp = dwani.Chat.direct(prompt= "parse the json and return answer as List of arrays " + tasks)
+
 
 print(resp)
+#print(resp)
+
+#json_value = json.loads(tasks)
+
+#print(json_value)
+#add_prompt = "for each of task, generate python code to execute in a docker container. Results will be verfied in future step"
+#resp = dwani.Chat.direct(prompt= add_prompt + tasks)
+
+#print(resp)
 
 
