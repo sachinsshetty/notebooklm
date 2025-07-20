@@ -11,9 +11,9 @@ export DWANI_API_KEY='your_api_key_here'
 export DWANI_API_BASE_URL='https://api.example.com'
 ```
 
-- python pdf_search.py
+- python directory_extract.py
 
-- python english_pdf_search.py
+- python plan_creator.py
 
 https://techeurope.notion.site/berlin-hackathon-manual
 
