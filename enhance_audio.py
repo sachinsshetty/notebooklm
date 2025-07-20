@@ -1,81 +1,68 @@
-import asyncio
+import requests
+import os
 from pathlib import Path
-from typing import Any
-
-import aiofiles
-import aiohttp
-
-import os 
 import dwani
 
-import tempfile
+# Set up Dwani API credentials
 dwani.api_key = os.getenv("DWANI_API_KEY")
-
 dwani.api_base = os.getenv("DWANI_API_BASE_URL")
-
-
-API_URL = "https://api.ai-coustics.com/v1"
-
-
 api_key = os.getenv("SOUND_API_KEY")
 
-async def upload_and_enhance(
-    url: str,
-    file_path: Path,
-    arguments: dict[str, Any],
-) -> str:
-    form_data = aiohttp.FormData()
-    for field_name, field_value in arguments.items():
-        form_data.add_field(field_name, str(field_value))
+# Generate speech using Dwani
+response = dwani.Audio.speech(
+    input="what is your name? I am sachin from Bonn",
+    response_format="mp3",
+    language="english"
+)
 
-    async with aiofiles.open(file_path, "rb") as file:
-        form_data.add_field(
-            "file",
-            file,
-            content_type="application/octet-stream",
-            filename=file_path.name,
-        )
+# Save the generated audio
+file_path = Path("sound-input.mp3")
+with open(file_path, "wb") as f:
+    f.write(response)
 
-        async with aiohttp.ClientSession(
-            headers={"X-API-Key": api_key}
-        ) as session:
-            async with session.post(url, data=form_data) as response:
-                if response.status != 201:
-                    response_text = await response.text()
-                    print(f"Error occured: {response_text}")
-                    return None
+# Enhance audio using ai-coustics API
+url = "https://api.ai-coustics.io/v1/media/enhance"
+headers = {
+    "accept": "application/json",
+    "x-api-key": api_key
+}
+files = {
+    "file": open("sound-input.mp3", "rb")
+}
+data = {
+    "loudness_target_level": "-14",
+    "loudness_peak_limit": "-1",
+    "enhancement_level": "1",
+    "transcode_kind": "MP3"
+}
 
-                response_json = await response.json()
-                generated_name = response_json["generated_name"]
-                print(f"Uploaded file's generated name: {generated_name}")
-                return generated_name
+# Send POST request to enhance audio
+response = requests.post(url, headers=headers, files=files, data=data)
 
+# Check response status
+if response.status_code == 201:
+    response_data = response.json()  # Parse JSON response
+    generated_name = response_data['generated_name']  # Access generated_name
+    print(f"Generated name: {generated_name}")
+else:
+    print(f"Error: {response.status_code}")
+    print(response.text)
+    exit()
 
-def main(file_path: Path, arguments: dict[str, Any]) -> None:
-    url = f"{API_URL}/media/enhance"
+# Download the enhanced audio
+url = f"https://api.ai-coustics.io/v1/media/{generated_name}"
+headers = {
+    "accept": "application/json",
+    "x-api-key": api_key
+}
 
-    asyncio.run(
-        upload_and_enhance(
-            url,
-            file_path,
-            arguments,
-        )
-    )
+response = requests.get(url, headers=headers)
 
-
-if __name__ == "__main__":
-
-
-    response = dwani.Audio.speech(input = "what is your name? I am sachin from Bonn", response_format="mp3", language="english")
-    file_path = Path("sound-input.mp3")
-    with open(file_path, "wb") as f:
-        f.write(response)
-
-    file_path = Path("sound-input.mp3")
-    arguments = {
-        "loudness_target_level": -14,
-        "loudness_peak_limit": -1,
-        "enhancement_level": 1.0,
-        "transcode_kind": "MP3",
-    }
-    main(file_path, arguments)
+# Check if request was successful
+if response.status_code == 200:
+    with open("enhanced_sound.mpga", "wb") as file:
+        file.write(response.content)
+    print("File saved as enhanced_sound.mpga")
+else:
+    print(f"Error: {response.status_code}")
+    print(response.text)
