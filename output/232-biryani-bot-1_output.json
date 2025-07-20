@@ -1,0 +1,26 @@
+{
+    "top_5_items": [
+        {
+            "item": "Robot Base",
+            "dimensions": "26.38 cm (width) x 81 cm (height) x 1.2 m (length)",
+            "description": "The physical foundation of the Biryani Bot, providing stability and space for components."
+        },
+        {
+            "item": "Cooking Video",
+            "description": "The primary input for the robot, providing visual instructions for food preparation."
+        },
+        {
+            "item": "Algorithm (Algo)",
+            "description": "The core processing logic that interprets the cooking video and translates it into robot actions."
+        },
+        {
+            "item": "Recipe Instruction",
+            "description": "A structured representation of the cooking process, likely derived from the video and used to guide the robot."
+        },
+        {
+            "item": "Feedback Loop (Feedback, Demo - Video)",
+            "description": "The system's ability to learn and improve through user feedback and demonstration videos, refining its cooking capabilities."
+        }
+    ],
+    "project_summary": "Biryani Bot: An accessible, open-source video-to-food-making robot designed to provide home-made and fresh food to individuals with spinal cord injuries, leveraging advanced technology in an accessible way."
+}

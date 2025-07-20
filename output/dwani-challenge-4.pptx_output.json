@@ -1,0 +1,24 @@
+{
+    "top_5_items": [
+        {
+            "item": "H200 GPU",
+            "reason": "Crucial for achieving the Dwani.ai goal of serving 10,000 concurrent LLM inference requests and demonstrating superior performance over the RTX 5090.  It 'melts' under load, showcasing efficiency."
+        },
+        {
+            "item": "TensorRT-LLM Framework",
+            "reason": "The core technology enabling high throughput, low latency, and multi-GPU scaling \u2013 essential for the performance improvements demonstrated."
+        },
+        {
+            "item": "Dwani.ai Platform",
+            "reason": "The platform that integrates the models and utilizes TensorRT-LLM to manage and optimize the inference requests, facilitating the scaling to 10,000 concurrent requests."
+        },
+        {
+            "item": "Profiling & Optimization (Nsight, vidia-smi)",
+            "reason": "Used to maximize core usage and ensure the H200 is operating at its full potential, overcoming the initial issue of underutilization and proving its superiority."
+        },
+        {
+            "item": "Benchmark Suite (Qwen3-0.6B, Dynamic Batching)",
+            "reason": "Provides a rigorous testing methodology to measure throughput, latency, utilization, and power consumption, allowing for quantifiable comparison between the H200 and RTX 5090."
+        }
+    ]
+}
