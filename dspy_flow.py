@@ -7,7 +7,7 @@ import requests
 
 # Environment variables
 vllm_ip = os.getenv("VLLM_IP", "http://localhost")  # Default to localhost if not set
-vllm_port = 8000  # Default vLLM port; adjust if different
+vllm_port = 9000  # Default vLLM port; adjust if different
 DOORDASH_API_KEY = os.getenv("DOORDASH_API_KEY")
 
 
