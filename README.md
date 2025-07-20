@@ -1,8 +1,14 @@
 notebooklm
 
-### Install the library
+- Partner Tools
+  - aicoustics for - Speech modulation
+  - Whisper + openai Spec : for Data manipulation via prompts using vLLM
+  - ElevenLabs = TTS / Kokoro
+
+
+### Install all libraries
 ```bash
-pip install --upgrade dwani
+pip install -r requirements
 ```
 
 ### Setup the credentials
@@ -10,6 +16,7 @@ pip install --upgrade dwani
 export DWANI_API_KEY='your_api_key_here'
 export DWANI_API_BASE_URL='https://api.example.com'
 export SOUND_API_KEY='api-key-for-ai-coustcs'
+export VLLM_IP="vllm_ip_with_openai"
 ```
 
 - python directory_extract.py

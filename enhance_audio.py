@@ -20,7 +20,7 @@ def generate_audio(text, file_name):
         f.write(response)
 
 
-def enhance_audio(input_file_name, output_file_name):
+def enhance_audio(input_file_name, output_file_name, sound_configs):
     # Enhance audio using ai-coustics API
     url = "https://api.ai-coustics.io/v1/media/enhance"
     headers = {
@@ -30,15 +30,9 @@ def enhance_audio(input_file_name, output_file_name):
     files = {
         "file": open(input_file_name, "rb")
     }
-    data = {
-        "loudness_target_level": "-14",
-        "loudness_peak_limit": "-1",
-        "enhancement_level": "1",
-        "transcode_kind": "MP3"
-    }
 
     # Send POST request to enhance audio
-    response = requests.post(url, headers=headers, files=files, data=data)
+    response = requests.post(url, headers=headers, files=files, data=sound_configs)
 
     # Check response status
     if response.status_code == 201:
@@ -77,7 +71,16 @@ input_file_name = "sound-input.mp3"
 output_file_name = "enahnced_sound.mp3"
 # Save the generated audio
 
+
+sound_configs = {
+        "loudness_target_level": "-14",
+        "loudness_peak_limit": "-1",
+        "enhancement_level": "1",
+        "transcode_kind": "MP3"
+}
+
+
 text = "what is your name? I am sachin from Bonn"
 
 generate_audio(text, input_file_name)
-enhance_audio(input_file_name, output_file_name)
+enhance_audio(input_file_name, output_file_name, sound_configs)
