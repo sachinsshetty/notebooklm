@@ -2,23 +2,28 @@
     "top_5_items": [
         {
             "item": "Marketing Manager Experience",
-            "description": "Proven experience in launching and managing multi-channel campaigns, resulting in improved customer acquisition and retention rates. Demonstrated ability to drive lead generation and increase website traffic."
+            "description": "Proven track record in developing and executing successful marketing strategies, including multi-channel campaigns and lead generation initiatives. Demonstrated ability to improve customer acquisition and retention rates.",
+            "source": "Work Experience - Marketing Manager & Specialist (Studio Shodwe & Borcele University)"
         },
         {
             "item": "Lead Generation Success",
-            "description": "Specifically achieved a 25% increase in lead generation at Studio Shodwe, showcasing a strong ability to drive business growth."
+            "description": "Increased lead generation by 25% through implemented strategies.",
+            "source": "Work Experience - Studio Shodwe"
         },
         {
             "item": "Website Traffic Improvement",
-            "description": "Successfully increased website traffic by 30% through strategic implementation of marketing initiatives, highlighting digital marketing skills."
+            "description": "Improved website traffic by 30% through strategic implementation.",
+            "source": "Work Experience - Studio Shodwe"
         },
         {
-            "item": "Strategic Planning & Execution",
-            "description": "Possesses a strong foundation in strategic planning and execution, as evidenced by the development and management of comprehensive marketing strategies."
+            "item": "Strong Academic Background",
+            "description": "Bachelor of Business Management with a GPA of 3.8/4.0 from Borcele University.",
+            "source": "Education - Borcele University"
         },
         {
-            "item": "Strong Communication & Collaboration Skills",
-            "description": "Effective communication skills, demonstrated through collaboration with sales teams to create sales collateral and presentations."
+            "item": "Versatile Skills",
+            "description": "Possesses a strong skillset including Project Management, Public Relations, Time Management, Effective Communication, and Critical Thinking.",
+            "source": "Skills"
         }
     ]
 }

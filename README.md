@@ -1,9 +1,13 @@
-notebooklm
+notebooklm - StudyTutor
 
-- Partner Tools
+![StudyTutor](images/study-tutor.jpeg "StudyTutor") 
+
+> Voice Interaction for Learning from a Research Paper / Directory
+
+- Tools
+  - dwani.ai - Document extraction, Speech Generation, Q/A creation
   - aicoustics for - Speech modulation
   - Whisper + openai Spec : for Data manipulation via prompts using vLLM
-  - ACI.dev - Google Drive Integration : File Access
 
 ### Install all libraries
 ```bash

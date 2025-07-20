@@ -1,0 +1,129 @@
+{
+    "dwani-challenge-4.pptx_output": {
+        "top_5_items": [
+            {
+                "item": "H200 GPU",
+                "reason": "Crucial for achieving the Dwani.ai goal of serving 10,000 concurrent LLM inference requests and demonstrating superior performance over the RTX 5090.  It 'melts' under load, showcasing efficiency."
+            },
+            {
+                "item": "TensorRT-LLM Framework",
+                "reason": "The core technology enabling high throughput, low latency, and multi-GPU scaling \u2013 essential for the performance improvements demonstrated."
+            },
+            {
+                "item": "Dwani.ai Platform",
+                "reason": "The platform that integrates the models and utilizes TensorRT-LLM to manage and optimize the inference requests, facilitating the scaling to 10,000 concurrent requests."
+            },
+            {
+                "item": "Profiling & Optimization (Nsight, vidia-smi)",
+                "reason": "Used to maximize core usage and ensure the H200 is operating at its full potential, overcoming the initial issue of underutilization and proving its superiority."
+            },
+            {
+                "item": "Benchmark Suite (Qwen3-0.6B, Dynamic Batching)",
+                "reason": "Provides a rigorous testing methodology to measure throughput, latency, utilization, and power consumption, allowing for quantifiable comparison between the H200 and RTX 5090."
+            }
+        ]
+    },
+    "dwani-ai-workshop_output": {
+        "top_5_items": [
+            {
+                "item": "dwani.ai - Kannada Language AI Assistant",
+                "description": "A free, open-source, and private AI assistant specifically designed for Kannada language users. It offers chat, translation, ASR, TTS, and more, with a focus on accessibility and community development."
+            },
+            {
+                "item": "Open Source Tools & Models",
+                "description": "Dwani leverages Open Source Tools and AI4Bharat, Google Deepmind, and OpenAI models, ensuring transparency and community contribution."
+            },
+            {
+                "item": "Diverse Language Support",
+                "description": "Supports Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil, and Telugu, expanding its reach beyond Kannada."
+            },
+            {
+                "item": "Multiple Demo Applications",
+                "description": "Offers interactive demos for Chat, Vision, ASR, TTS, and PDF Chat, showcasing its capabilities and providing hands-on experience."
+            },
+            {
+                "item": "Problem Statements - Healthcare & Public Service",
+                "description": "Identifies key use cases in healthcare (symptom checker, telemedicine) and public service (grievance filing, e-governance) to highlight the potential impact of the platform."
+            }
+        ]
+    },
+    "Desiderata_By_Max_Ehrmann_output": {
+        "top_5_items": [
+            {
+                "item": "Peace in Silence",
+                "reason": "The poem explicitly encourages seeking peace amidst the chaos of life, highlighting the value of quiet reflection."
+            },
+            {
+                "item": "Truthfulness & Listening",
+                "reason": "Desiderata emphasizes speaking truth calmly and actively listening to others, even those who seem difficult."
+            },
+            {
+                "item": "Gratitude",
+                "reason": "The text repeatedly urges being humbly grateful for achievements and blessings, recognizing the value of what one possesses."
+            },
+            {
+                "item": "Caution & Virtue",
+                "reason": "It advises carefulness in business but also encourages seeking virtue and spiritual things, balancing practicality with a higher perspective."
+            },
+            {
+                "item": "Inner Peace",
+                "reason": "The core message of both poems is to maintain peace within oneself, regardless of external circumstances.  'Keep peace in your soul' is a direct call to action."
+            }
+        ]
+    },
+    "232-biryani-bot-1_output": {
+        "top_5_items": [
+            {
+                "item": "Robot Base",
+                "dimensions": "26.38 cm (width) x 81 cm (height) x 1.2 m (length)",
+                "description": "The physical foundation of the Biryani Bot, providing stability and space for components."
+            },
+            {
+                "item": "Cooking Video",
+                "description": "The primary input for the robot, providing visual instructions for food preparation."
+            },
+            {
+                "item": "Algorithm (Algo)",
+                "description": "The core processing logic that interprets the cooking video and translates it into robot actions."
+            },
+            {
+                "item": "Recipe Instruction",
+                "description": "A structured representation of the cooking process, likely derived from the video and used to guide the robot."
+            },
+            {
+                "item": "Feedback Loop (Feedback, Demo - Video)",
+                "description": "The system's ability to learn and improve through user feedback and demonstration videos, refining its cooking capabilities."
+            }
+        ],
+        "project_summary": "Biryani Bot: An accessible, open-source video-to-food-making robot designed to provide home-made and fresh food to individuals with spinal cord injuries, leveraging advanced technology in an accessible way."
+    },
+    "sample_resume_output": {
+        "top_5_items": [
+            {
+                "item": "Marketing Manager Experience",
+                "description": "Proven track record in developing and executing successful marketing strategies, including multi-channel campaigns and lead generation initiatives. Demonstrated ability to improve customer acquisition and retention rates.",
+                "source": "Work Experience - Marketing Manager & Specialist (Studio Shodwe & Borcele University)"
+            },
+            {
+                "item": "Lead Generation Success",
+                "description": "Increased lead generation by 25% through implemented strategies.",
+                "source": "Work Experience - Studio Shodwe"
+            },
+            {
+                "item": "Website Traffic Improvement",
+                "description": "Improved website traffic by 30% through strategic implementation.",
+                "source": "Work Experience - Studio Shodwe"
+            },
+            {
+                "item": "Strong Academic Background",
+                "description": "Bachelor of Business Management with a GPA of 3.8/4.0 from Borcele University.",
+                "source": "Education - Borcele University"
+            },
+            {
+                "item": "Versatile Skills",
+                "description": "Possesses a strong skillset including Project Management, Public Relations, Time Management, Effective Communication, and Critical Thinking.",
+                "source": "Skills"
+            }
+        ]
+    }
+}

@@ -1,24 +1,24 @@
 {
     "top_5_items": [
         {
-            "item": "Dwani.ai - Kannada Language AI Assistant",
-            "description": "An open-source, private, and free AI assistant specifically designed for Kannada language users. It focuses on accessibility and addresses the lack of voice technology support for Kannada speakers."
+            "item": "dwani.ai - Kannada Language AI Assistant",
+            "description": "A free, open-source, and private AI assistant specifically designed for Kannada language users. It offers chat, translation, ASR, TTS, and more, with a focus on accessibility and community development."
         },
         {
-            "item": "Open-Source Technology Stack",
-            "description": "Built on open-source tools and models (AI4Bharat, Google DeepMind, OpenAI), enabling community contribution and customization.  Utilizes a Python SDK for easy integration."
+            "item": "Open Source Tools & Models",
+            "description": "Dwani leverages Open Source Tools and AI4Bharat, Google Deepmind, and OpenAI models, ensuring transparency and community contribution."
         },
         {
-            "item": "Diverse Functionality",
-            "description": "Offers a range of features including chat in Kannada, translation, ASR, TTS, and LLM capabilities, with demos available on Hugging Face Spaces."
+            "item": "Diverse Language Support",
+            "description": "Supports Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil, and Telugu, expanding its reach beyond Kannada."
         },
         {
-            "item": "Supported Languages",
-            "description": "Currently supports Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil, and Telugu, with plans for further expansion."
+            "item": "Multiple Demo Applications",
+            "description": "Offers interactive demos for Chat, Vision, ASR, TTS, and PDF Chat, showcasing its capabilities and providing hands-on experience."
         },
         {
-            "item": "Problem Statements & Applications",
-            "description": "Identifies key areas for application, including healthcare, public service, and government, with specific problem statements like multilingual symptom checkers and e-governance chatbots."
+            "item": "Problem Statements - Healthcare & Public Service",
+            "description": "Identifies key use cases in healthcare (symptom checker, telemedicine) and public service (grievance filing, e-governance) to highlight the potential impact of the platform."
         }
     ]
 }
