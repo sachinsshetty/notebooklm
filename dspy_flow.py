@@ -1,17 +1,27 @@
 import dspy
 from typing import List, Dict
-import googleapiclient.discovery
+import googleapiclient.discovery  # Added for Google Calendar API (if used)
 from datetime import datetime, timedelta
-import requests
 import os
+import requests
 
-# Configure DSPy with a language model (e.g., Grok, GPT-4, or Llama)
-lm = dspy.LM("openai/gpt-4o", api_key=os.getenv("OPENAI_API_KEY"))
-dspy.settings.configure(lm=lm)
+# Environment variables
+vllm_ip = os.getenv("VLLM_IP", "http://localhost")  # Default to localhost if not set
+vllm_port = 8000  # Default vLLM port; adjust if different
+DOORDASH_API_KEY = os.getenv("DOORDASH_API_KEY")
+
+
+lm = dspy.LM("gemma3",
+             api_base=f"{vllm_ip}:{vllm_port}/v1",  # ensure this points to your port
+             api_key="local", model_type="chat")
+
+
+
+dspy.configure(lm=lm)
+
 
 # Mock APIs (replace with real API credentials and endpoints)
-GOOGLE_CALENDAR_API = None  # Initialize with googleapiclient.discovery
-DOORDASH_API_KEY = os.getenv("DOORDASH_API_KEY")
+GOOGLE_CALENDAR_API = None  # Initialize with googleapiclient.discovery for real use
 
 # DSPy Signatures
 class IntentParser(dspy.Signature):
@@ -46,15 +56,12 @@ class MeetingSchedulerAgent(dspy.Module):
         self.clarifier = dspy.Predict(ClarificationModule)
 
     def forward(self, request: str):
-        # Step 1: Parse the request
         parsed = self.parser(request=request)
         intent, entities = parsed.intent, parsed.entities
 
-        # Step 2: Generate task plan
         plan = self.planner(intent=intent, entities=entities)
         tasks = plan.tasks
 
-        # Step 3: Execute tasks
         results = []
         for task in tasks:
             result = self.execute_task(task, entities)
@@ -87,32 +94,25 @@ class MeetingSchedulerAgent(dspy.Module):
         return {"status": "success", "task": task}
 
     def check_calendars(self, attendees: List[str], duration: str) -> List[str]:
-        # Mock Google Calendar API call
         start_date = datetime.now() + timedelta(days=1)
         end_date = start_date + timedelta(days=7)
-        # Query calendars for free/busy times
         slots = ["2025-07-22 10:00-12:00", "2025-07-23 14:00-16:00"]  # Mock data
         return slots
 
     def book_room(self, slot: str, room: str) -> bool:
-        # Mock room booking API
         return True
 
     def send_invites(self, attendees: List[str], slot: str):
-        # Mock Google Calendar API event creation
         pass
 
     def order_catering(self, attendees: List[str], slot: str):
-        # Mock DoorDash API call
         pass
 
 # Voice Interface (Mock)
 def speech_to_text(audio_input):
-    # Use Whisper API or similar
     return "Set up our quarterly review with the product team. Find a 2-hour slot that works for everyone and book the main conference room."
 
 def text_to_speech(text):
-    # Use ElevenLabs or Google TTS
     print(f"Speaking: {text}")
 
 # Main Execution
@@ -121,7 +121,6 @@ def main():
     audio = None  # Mock audio input
     request = speech_to_text(audio)
     result = agent(request=request)
-
     if result["status"] == "clarification_needed":
         text_to_speech(result["question"])
     else:
@@ -129,4 +128,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
