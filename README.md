@@ -3,8 +3,7 @@ notebooklm
 - Partner Tools
   - aicoustics for - Speech modulation
   - Whisper + openai Spec : for Data manipulation via prompts using vLLM
-  - ElevenLabs = TTS / Kokoro
-
+  - ACI.dev - Google Drive Integration : File Access
 
 ### Install all libraries
 ```bash
