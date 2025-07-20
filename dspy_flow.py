@@ -11,11 +11,11 @@ vllm_port = 8000  # Default vLLM port; adjust if different
 DOORDASH_API_KEY = os.getenv("DOORDASH_API_KEY")
 
 
-lm = dspy.LM("gemma3",
+lm = dspy.LM("google/gemma-3-4b-it ",
              api_base=f"{vllm_ip}:{vllm_port}/v1",  # ensure this points to your port
-             api_key="local", model_type="chat")
-
-
+             api_key="local", model_type="chat",
+             custom_llm_provider="vllm"
+             )
 
 dspy.configure(lm=lm)
 
