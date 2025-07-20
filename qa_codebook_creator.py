@@ -58,10 +58,16 @@ def qa_book_creator(key_points_json, qa_json_file):
         # Store content with filename as key
     
     system_prompt = "return answer in json format"
-    result = dwani.Chat.direct(
+    qa_result = dwani.Chat.direct(
     prompt="You are a teacher, creating questions for an oral exam based on context " + str(json_data) , system_prompt= system_prompt)
 
+    
+    result = dwani.Chat.direct(
+    prompt="Clean the json " + str(qa_result) , system_prompt= system_prompt)
+
     print(result)
+
+
         # Write combined data to output file
     with open(qa_json_file, 'w', encoding='utf-8') as output:
         json.dump(result, output, indent=4)
