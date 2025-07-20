@@ -23,18 +23,26 @@ file_path = 'system_prompt.md'
 markdown_content = read_markdown_file(file_path)
 #print(markdown_content)
 
-system_prompt = "do not explain, provide the answer in json format"
-resp = dwani.Chat.direct(prompt=markdown_content, system_prompt=system_prompt)
+user_prompt = "Plan to a quarterly performance review of the Datacenter Infra team , return the answer in json format"
+resp = dwani.Chat.direct(prompt=user_prompt, system_prompt=markdown_content)
 
 
-
-tasks = resp['response'].replace('```json', '').replace('```', '').strip()
-
-
-resp = dwani.Chat.direct(prompt= "parse the json and return answer as List of arrays " + tasks)
+print(resp['response'])
 
 
-print(resp)
+user_prompt = "Plan to a Birthday event with family and close friends , return the answer in json format"
+resp = dwani.Chat.direct(prompt=user_prompt, system_prompt=markdown_content)
+
+
+print(resp['response'])
+
+#tasks = resp['response'].replace('```json', '').replace('```', '').strip()
+
+
+#resp = dwani.Chat.direct(prompt= "parse the json and return answer as List of arrays " + tasks)
+
+
+#print(resp)
 #print(resp)
 
 #json_value = json.loads(tasks)
