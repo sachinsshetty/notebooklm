@@ -2,3 +2,4 @@ dspy-ai
 dwani
 google-api-python-client
 vllm
+aiofiles
